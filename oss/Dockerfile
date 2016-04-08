@@ -2,7 +2,7 @@ FROM       centos:centos7
 MAINTAINER Sonatype <cloud-ops@sonatype.com>
 
 ENV SONATYPE_WORK /sonatype-work
-ENV NEXUS_VERSION 2.12.1-01
+ENV NEXUS_VERSION 3.0.0-03
 
 ENV JAVA_HOME /opt/java
 ENV JAVA_VERSION_MAJOR 8
@@ -24,7 +24,7 @@ RUN mkdir -p /opt \
 
 RUN mkdir -p /opt/sonatype/nexus \
   && curl --fail --silent --location --retry 3 \
-    https://download.sonatype.com/nexus/oss/nexus-${NEXUS_VERSION}-bundle.tar.gz \
+    http://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz \
   | gunzip \
   | tar x -C /tmp nexus-${NEXUS_VERSION} \
   && mv /tmp/nexus-${NEXUS_VERSION}/* /opt/sonatype/nexus/ \
